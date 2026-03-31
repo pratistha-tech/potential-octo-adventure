@@ -1,0 +1,54 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class BankAccount {
+private:
+    string owner;
+    double balance;
+
+public:
+    // Constructor to set up the account
+    BankAccount(string name, double initial_balance) {
+        owner = name;
+        balance = initial_balance;
+    }
+
+    void deposit(double amount) {
+        if (amount > 0) {
+            balance += amount;
+            cout << "Successfully deposited Rs. " << amount << endl;
+        }
+    }
+
+    void withdraw(double amount) {
+        if (amount > balance) {
+            cout << "Insufficient funds!" << endl;
+        } else {
+            balance -= amount;
+            cout << "Successfully withdrew Rs. " << amount << endl;
+        }
+    }
+
+    void displayStatus() {
+        cout << "--------------------------" << endl;
+        cout << "Account Holder: " << owner << endl;
+        cout << "Current Balance: Rs. " << balance << endl;
+        cout << "--------------------------" << endl;
+    }
+};
+
+int main() {
+    // Creating an object of the BankAccount class
+    BankAccount myAccount("Pratistha", 500.0);
+
+    myAccount.displayStatus();
+    
+    myAccount.deposit(250.0);
+    myAccount.withdraw(100.0);
+    
+    myAccount.displayStatus();
+
+    return 0;
+}
